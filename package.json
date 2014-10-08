@@ -1,0 +1,31 @@
+{
+  "name": "gulp-json-wrapper",
+  "version": "1.0.0",
+  "description": "Create javascript config from json file",
+  "license": "MIT",
+  "repository": "krowten/gulp-json-wrapper",
+  "author": {
+    "name": "Vladimir Kraykovskiy",
+    "email": "krowten@krowten.ru",
+    "url": "http://krowten.ru"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "json",
+    "config",
+    "angular"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "through2": "^0.6.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
