@@ -34,7 +34,7 @@ gulp.task('js', function () {
 
 #### `src: String`
 
-Patch to json file.
+Path to json file.
 
 #### `angular: Boolean`
 
