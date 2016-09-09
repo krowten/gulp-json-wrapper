@@ -35,7 +35,7 @@ function gulpJsonWrapper(params) {
 
         if (params.angular){
           var moduleName = params.module || 'json';
-          jsonFile = 'angular.module(\''+moduleName+'\', []).value(\''+params.namespace+'\', '+JSON.stringify(obj)+');';
+          jsonFile = 'angular.module(\''+moduleName+'\', []).constant(\''+params.namespace+'\', '+JSON.stringify(obj)+');';
         } else {
           jsonFile = 'var ' + params.namespace + '=' + JSON.stringify(obj) + ';';
         }
