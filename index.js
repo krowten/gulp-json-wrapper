@@ -28,14 +28,18 @@ function gulpJsonWrapper(params) {
   var stream = through.obj(
     function(file, enc, cb) {
       var self = this;
-      fs.readFile(params.src, "utf8", function (err, jsonFile) {
+      fs.readFile(params.src, "utf8", function(err, jsonFile) {
         if (err) throw new PluginError(PLUGIN_NAME, 'Json file not found!');
 
         var obj = JSON.parse(jsonFile);
 
-        if (params.angular){
+        if (params.angular) {
           var moduleName = params.module || 'json';
-          jsonFile = 'angular.module(\''+moduleName+'\', []).constant(\''+params.namespace+'\', '+JSON.stringify(obj)+');';
+          jsonFile = "(function(){ var module; try { ";
+          jsonFile += 'module = angular.module(\'' + moduleName + '\');';
+          jsonFile += '} catch(e) { module = angular.module(\'' + moduleName + '\', []); }';
+          jsonFile += 'module.constant(\'' + params.namespace + '\', ' + JSON.stringify(obj) + ');';
+          jsonFile += '}());';
         } else {
           jsonFile = 'var ' + params.namespace + '=' + JSON.stringify(obj) + ';';
         }
